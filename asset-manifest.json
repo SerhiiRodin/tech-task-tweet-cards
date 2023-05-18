@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tech-task-tweet-cards/static/css/main.83738527.css",
+    "main.js": "/tech-task-tweet-cards/static/js/main.f1ad05de.js",
+    "index.html": "/tech-task-tweet-cards/index.html",
+    "main.83738527.css.map": "/tech-task-tweet-cards/static/css/main.83738527.css.map",
+    "main.f1ad05de.js.map": "/tech-task-tweet-cards/static/js/main.f1ad05de.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83738527.css",
+    "static/js/main.f1ad05de.js"
+  ]
+}
