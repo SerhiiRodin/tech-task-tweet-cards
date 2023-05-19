@@ -62,7 +62,7 @@ export const deleteContactsAction = createAsyncThunk(
   'contacts/deleteContacts',
   async (contactId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
+      const response = await axios.patch(`/users/${contactId}/tweets`);
 
       toast.success(`Delete contact.`, {
         autoClose: 1000,

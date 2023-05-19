@@ -1,8 +1,8 @@
 import css from './Container/Container.module.css';
 
-import { ContactForm } from './ContactForm/ContactForm';
+
 import { UserCard } from './UserCard/UserCard';
-import { Filter } from './Filter/Filter';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsAction, getUsersAction } from 'redux/operations';
