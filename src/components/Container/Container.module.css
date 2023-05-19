@@ -5,12 +5,12 @@
   padding: 10px 5px;
 }
 
-h1 {
-  font-size: 25px;
+.h1 {
+  font-size: 35px;
   font-weight: 700;
 }
 
-h2 {
+.h2 {
   font-size: 20px;
   font-weight: 500;
 }

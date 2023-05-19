@@ -1,15 +1,11 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   deleteContactsAction,
-  getContactsAction,
   postContactsAction,
+  getUsersAction,
 } from './operations';
 
-const arrActions = [
-  deleteContactsAction,
-  getContactsAction,
-  postContactsAction,
-];
+const arrActions = [deleteContactsAction, getUsersAction, postContactsAction];
 
 const getActionWithType = type => {
   return arrActions.map(el => el[type]);
@@ -22,6 +18,7 @@ const handlePending = (state, action) => {
 const handleFulfilledGet = (state, action) => {
   state.isLoading = false;
   state.items = action.payload;
+  state.users = action.payload;
   state.error = null;
 };
 
@@ -42,35 +39,39 @@ const handleRejected = (state, action) => {
   state.error = 'action.payload';
 };
 
-const initialState = {
+export const initialState = {
   filter: '',
   items: [],
+  users: [],
   isLoading: false,
   error: null,
 };
 
 const contactsSlice = createSlice({
-  name: 'contacts',
+  name: 'users',
   initialState: initialState,
   reducers: {
     setStatusFilter: (state, action) => {
       state.filter = action.payload;
     },
 
-    ////Когда не было createAsyncThunk мы создавали Экшены,
-    // когда он появился, то он сам создает экшены и мы их обр. с помощью extraReducers
     // fetching: (state, action) => {
     //   state.isLoading = true;
     // },
+
     // fetchSuccess: (state, action) => {
     //   state.isLoading = false;
-    //   state.items = action.payload;
+    //   state.users = action.payload;
     //   state.error = null;
     // },
+
     // fetchError: (state, action) => {
     //   state.isLoading = false;
     //   state.error = action.payload;
     // },
+
+    ////Когда не было createAsyncThunk мы создавали Экшены,
+    // когда он появился, то он сам создает экшены и мы их обр. с помощью extraReducers
   },
 
   // extraReducers: {
@@ -92,7 +93,7 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       // .addCase(getContactsAction.pending, handlePending)
-      .addCase(getContactsAction.fulfilled, handleFulfilledGet)
+      .addCase(getUsersAction.fulfilled, handleFulfilledGet)
       // .addCase(getContactsAction.rejected, handleRejected)
 
       // .addCase(postContactsAction.pending, handlePending)
@@ -128,4 +129,4 @@ const contactsSlice = createSlice({
 export const { addContact, deleteContact, setStatusFilter } =
   contactsSlice.actions;
 
-export const contactsReducer = contactsSlice.reducer;
+export const usersReducer = contactsSlice.reducer;
