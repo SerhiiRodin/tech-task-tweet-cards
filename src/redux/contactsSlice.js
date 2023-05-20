@@ -1,11 +1,12 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
+
 import {
   deleteContactsAction,
   postContactsAction,
   getUsersAction,
 } from './operations';
-import persistReducer from 'redux-persist/es/persistReducer';
-import storage from 'redux-persist/lib/storage';
 
 const arrActions = [deleteContactsAction, getUsersAction, postContactsAction];
 
@@ -19,7 +20,6 @@ const handlePending = (state, action) => {
 
 const handleFulfilledGet = (state, action) => {
   state.isLoading = false;
-  state.items = action.payload;
   state.users = action.payload;
   state.error = null;
 };
@@ -43,7 +43,6 @@ const handleRejected = (state, action) => {
 
 export const initialState = {
   filter: '',
-  items: [],
   users: [],
   isLoading: false,
   error: null,

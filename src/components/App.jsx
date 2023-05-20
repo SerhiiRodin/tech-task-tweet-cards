@@ -1,13 +1,12 @@
-import css from './Container/Container.module.css';
-
-
-import { UserCard } from './UserCard/UserCard';
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsersAction } from 'redux/operations';
+
 import { ToastContainer } from 'react-toastify';
+
+import { getUsersAction } from 'redux/operations';
 import { UsersList } from './UserList/UserList';
+
+import css from './Container/Container.module.css';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ export const App = () => {
       {users.length !== 0 && (
         <>
           {/* <UserCard /> */}
-          <UsersList/>
+          <UsersList />
         </>
       )}
       <ToastContainer />
