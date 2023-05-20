@@ -48,3 +48,10 @@ img {
   max-width: 100%;
   margin: 0px;
 }
+
+a,
+button {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

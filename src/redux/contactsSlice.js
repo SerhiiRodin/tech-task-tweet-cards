@@ -47,7 +47,7 @@ export const initialState = {
   error: null,
 };
 
-const contactsSlice = createSlice({
+const usersSlice = createSlice({
   name: 'users',
   initialState: initialState,
   reducers: {
@@ -126,7 +126,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { addContact, deleteContact, setStatusFilter } =
-  contactsSlice.actions;
+export const { addContact, deleteContact, setStatusFilter } = usersSlice.actions;
 
-export const usersReducer = contactsSlice.reducer;
+export const usersReducer = usersSlice.reducer;

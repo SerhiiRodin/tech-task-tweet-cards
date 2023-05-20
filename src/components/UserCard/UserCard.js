@@ -1,28 +1,21 @@
+import { useState } from 'react';
 import css from './UserCard.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContactsAction } from 'redux/operations';
+
+const formatFollowers = number => {
+  return String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
 export function UserCard() {
-  const { users } = useSelector(state => state.contacts);
+  const [isFollow, setIsFollow] = useState(false);
+
+  const { users } = useSelector(state => state.users);
+
+  console.log(users);
 
   const dispatch = useDispatch();
 
-  // const filterByName = () => {
-  //   const arr = users.filter(el =>
-  //     el.name.toLowerCase().includes(filter.trim().toLowerCase())
-  //   );
-  //   return arr;
-  // };
-
-  // let currentContacts = [];
-
-  // if (filter === '') {
-  //   currentContacts = users;
-  // } else currentContacts = filterByName();
-
-  const handleDeleteContact = contactId => {
-    dispatch(deleteContactsAction(contactId));
-  };
+  const isFollowed = true;
 
   // "user": "Kirk Harvey",
   // "avatar": "avatar 1",
@@ -34,19 +27,37 @@ export function UserCard() {
     <ul className={css['list-wraper']}>
       {users.map(({ id, user, avatar, followers, tweets }) => {
         return (
-          <li key={id} className={css['list-item']}>
-            <p>Name: {user}</p>
-            <p> {tweets} TWEETS</p>
-            <p> {followers} Followers</p>
-
-            <button
-              type="button"
-              className={css['list-button']}
-              onClick={() => handleDeleteContact(id)}
-            >
-              Follow
-            </button>
-          </li>
+          <div className={css.card}>
+            <div className={css.top}></div>
+            <div className={css.divider}>
+              <div className={css.userImageWrapper}>
+                <img src={avatar} alt={user} />
+              </div>
+            </div>
+            <div className={css.info}>
+              <p className={css.tweets}>{tweets} tweets</p>
+              <p className={css.followers}>
+                {formatFollowers(followers)} followers
+              </p>
+              {!isFollowed ? (
+                <button
+                  type="button"
+                  className={`button ${css.followBtn}`}
+                  // onClick={() => dispatch(addFollowing(id))}
+                >
+                  Follow
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={`button ${css.followBtn} active`}
+                  // onClick={() => dispatch(removeFollowing(id))}
+                >
+                  Following
+                </button>
+              )}
+            </div>
+          </div>
         );
       })}
     </ul>
