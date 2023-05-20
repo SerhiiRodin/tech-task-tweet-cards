@@ -4,6 +4,8 @@ import {
   postContactsAction,
   getUsersAction,
 } from './operations';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 
 const arrActions = [deleteContactsAction, getUsersAction, postContactsAction];
 
@@ -45,6 +47,7 @@ export const initialState = {
   users: [],
   isLoading: false,
   error: null,
+  followings: [],
 };
 
 const usersSlice = createSlice({
@@ -53,6 +56,16 @@ const usersSlice = createSlice({
   reducers: {
     setStatusFilter: (state, action) => {
       state.filter = action.payload;
+    },
+
+    addFollowing: (state, { payload }) => {
+      state.followings.push(payload);
+    },
+
+    removeFollowing: (state, { payload }) => {
+      state.followings = state.followings.filter(
+        following => following !== payload
+      );
     },
 
     // fetching: (state, action) => {
@@ -126,6 +139,21 @@ const usersSlice = createSlice({
   },
 });
 
-export const { addContact, deleteContact, setStatusFilter } = usersSlice.actions;
+export const {
+  addContact,
+  deleteContact,
+  setStatusFilter,
+  addFollowing,
+  removeFollowing,
+} = usersSlice.actions;
 
-export const usersReducer = usersSlice.reducer;
+const persistConfig = {
+  key: 'followings',
+  storage,
+  whitelist: ['followings'],
+};
+
+export const persistedUsersReducer = persistReducer(
+  persistConfig,
+  usersSlice.reducer
+);
