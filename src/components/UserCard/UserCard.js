@@ -6,12 +6,10 @@ const formatFollowers = number => {
   return String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-export function UserCard() {
+export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
   const [isFollow, setIsFollow] = useState(false);
 
-  const { users } = useSelector(state => state.users);
-
-  console.log(users);
+  console.log(user);
 
   const dispatch = useDispatch();
 
@@ -24,42 +22,34 @@ export function UserCard() {
   // "id": "1"
 
   return (
-    <ul className={css['list-wraper']}>
-      {users.map(({ id, user, avatar, followers, tweets }) => {
-        return (
-          <div className={css.card}>
-            <div className={css.top}></div>
-            <div className={css.divider}>
-              <div className={css.userImageWrapper}>
-                <img src={avatar} alt={user} />
-              </div>
-            </div>
-            <div className={css.info}>
-              <p className={css.tweets}>{tweets} tweets</p>
-              <p className={css.followers}>
-                {formatFollowers(followers)} followers
-              </p>
-              {!isFollowed ? (
-                <button
-                  type="button"
-                  className={`button ${css.followBtn}`}
-                  // onClick={() => dispatch(addFollowing(id))}
-                >
-                  Follow
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className={`button ${css.followBtn} active`}
-                  // onClick={() => dispatch(removeFollowing(id))}
-                >
-                  Following
-                </button>
-              )}
-            </div>
-          </div>
-        );
-      })}
-    </ul>
+    <div className={css.card}>
+      <div className={css.top}></div>
+      <div className={css.divider}>
+        <div className={css.userImageWrapper}>
+          <img src={avatar} alt={user} />
+        </div>
+      </div>
+      <div className={css.info}>
+        <p className={css.tweets}>{tweets} tweets</p>
+        <p className={css.followers}>{formatFollowers(followers)} followers</p>
+        {!isFollowed ? (
+          <button
+            type="button"
+            className={`button ${css.followBtn}`}
+            // onClick={() => dispatch(addFollowing(id))}
+          >
+            Follow
+          </button>
+        ) : (
+          <button
+            type="button"
+            className={`button ${css.followBtn} active`}
+            // onClick={() => dispatch(removeFollowing(id))}
+          >
+            Following
+          </button>
+        )}
+      </div>
+    </div>
   );
 }

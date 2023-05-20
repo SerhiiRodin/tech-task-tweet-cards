@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersAction } from 'redux/operations';
 import { ToastContainer } from 'react-toastify';
+import { UsersList } from './UserList/UserList';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,8 @@ export const App = () => {
       {error && <h2>Server problems, try later</h2>}
       {users.length !== 0 && (
         <>
-          <UserCard />
+          {/* <UserCard /> */}
+          <UsersList/>
         </>
       )}
       <ToastContainer />

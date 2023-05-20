@@ -86,3 +86,8 @@
   background-color: #ebd8ff;
   cursor: pointer;
 }
+
+.followBtn.active,
+.followBtn:hover {
+  background: #5cd3a8;
+}
