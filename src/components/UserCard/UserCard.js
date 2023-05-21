@@ -32,7 +32,7 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
       <div className={css.info}>
         <p className={css.tweets}>{tweets} tweets</p>
         <p className={css.followers}>{formatFollowers(followers)} followers</p>
-        {!isFollowed ? (
+        {isFollowed ? (
           <button
             type="button"
             className={`button ${css.followBtn}`}
