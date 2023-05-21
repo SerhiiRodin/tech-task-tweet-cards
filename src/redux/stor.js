@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { persistedUsersReducer } from './contactsSlice';
+import { persistedUsersReducer } from './usersSlice';
 
 export const store = configureStore({
   reducer: {

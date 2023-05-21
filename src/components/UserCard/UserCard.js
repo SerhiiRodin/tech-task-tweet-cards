@@ -1,25 +1,27 @@
-import { useState } from 'react';
-import css from './UserCard.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+
+import PropTypes from 'prop-types';
+
+import css from './UserCard.module.css';
+import { addFollowing, removeFollowing } from 'redux/usersSlice';
 
 const formatFollowers = number => {
   return String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
 export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
-  const [isFollow, setIsFollow] = useState(false);
-
-  console.log(user);
-
   const dispatch = useDispatch();
+  const followings = useSelector(state => state.users.followings);
 
-  const isFollowed = true;
+  console.log(followings);
 
-  // "user": "Kirk Harvey",
-  // "avatar": "avatar 1",
-  // "followers": 50,
-  // "tweets": 76,
-  // "id": "1"
+  const isFollowed = () => followings.includes(id);
+
+  console.log(isFollowed);
+
+  if (isFollowed()) {
+    followers = Number(followers) + 1;
+  }
 
   return (
     <div className={css.card}>
@@ -32,11 +34,11 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
       <div className={css.info}>
         <p className={css.tweets}>{tweets} tweets</p>
         <p className={css.followers}>{formatFollowers(followers)} followers</p>
-        {isFollowed ? (
+        {!isFollowed() ? (
           <button
             type="button"
             className={`button ${css.followBtn}`}
-            // onClick={() => dispatch(addFollowing(id))}
+            onClick={() => dispatch(addFollowing(id))}
           >
             Follow
           </button>
@@ -44,7 +46,7 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
           <button
             type="button"
             className={`button ${css.followBtn} active`}
-            // onClick={() => dispatch(removeFollowing(id))}
+            onClick={() => dispatch(removeFollowing(id))}
           >
             Following
           </button>
@@ -53,3 +55,13 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
     </div>
   );
 }
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    avatar: PropTypes.string.isRequired,
+  }),
+};
