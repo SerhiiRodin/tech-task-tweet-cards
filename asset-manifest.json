@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/tech-task-tweet-cards/static/css/main.0e6c5bcd.css",
-    "main.js": "/tech-task-tweet-cards/static/js/main.cf4bc3a2.js",
+    "main.css": "/tech-task-tweet-cards/static/css/main.ef68e7fb.css",
+    "main.js": "/tech-task-tweet-cards/static/js/main.450158b0.js",
     "static/media/card-top-picture.png": "/tech-task-tweet-cards/static/media/card-top-picture.032662a2a907475127d7.png",
     "index.html": "/tech-task-tweet-cards/index.html",
-    "main.0e6c5bcd.css.map": "/tech-task-tweet-cards/static/css/main.0e6c5bcd.css.map",
-    "main.cf4bc3a2.js.map": "/tech-task-tweet-cards/static/js/main.cf4bc3a2.js.map"
+    "main.ef68e7fb.css.map": "/tech-task-tweet-cards/static/css/main.ef68e7fb.css.map",
+    "main.450158b0.js.map": "/tech-task-tweet-cards/static/js/main.450158b0.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e6c5bcd.css",
-    "static/js/main.cf4bc3a2.js"
+    "static/css/main.ef68e7fb.css",
+    "static/js/main.450158b0.js"
   ]
 }
