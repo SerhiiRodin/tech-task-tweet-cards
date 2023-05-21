@@ -10,7 +10,7 @@ export const Layout = () => {
         <NavLink to="/" className={css.NavLink}>
           Home
         </NavLink>
-        <NavLink to="/tweetspage" className={css.NavLink}>
+        <NavLink to="/tweets" className={css.NavLink}>
           TweetCards
         </NavLink>
       </nav>
