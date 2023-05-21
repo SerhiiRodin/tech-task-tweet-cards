@@ -17,8 +17,6 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
 
   const isFollowed = () => followings.includes(id);
 
-  console.log(isFollowed);
-
   if (isFollowed()) {
     followers = Number(followers) + 1;
   }
@@ -45,7 +43,7 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
         ) : (
           <button
             type="button"
-            className={`button ${css.followBtn} active`}
+            className={`button ${css.followBtnActive} active`}
             onClick={() => dispatch(removeFollowing(id))}
           >
             Following
