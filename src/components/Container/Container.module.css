@@ -1,9 +1,9 @@
 .container {
   text-align: center;
-  width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 10px 5px;
+  /* width: 1200px; */
+  /* margin-right: auto; */
+  /* margin-left: auto; */
+  /* padding: 10px 5px; */
 }
 
 .h1 {
@@ -11,10 +11,19 @@
   font-weight: 700;
   margin-bottom: 15px;
   text-shadow:2px -3px 3px #835959;
+  text-align: center;
 }
 
 .h2 {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 15px;
+}
+
+.welcome-titel {
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+  margin-top: 55px;
+  text-shadow:2px -3px 3px #835959;
 }

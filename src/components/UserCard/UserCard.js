@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import css from './UserCard.module.css';
 import { addFollowing, removeFollowing } from 'redux/usersSlice';
+
+import css from './UserCard.module.css';
 
 const formatFollowers = number => {
   return String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
