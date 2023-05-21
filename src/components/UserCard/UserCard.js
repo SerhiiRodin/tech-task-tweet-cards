@@ -14,8 +14,6 @@ export function UserCard({ user: { id, user, tweets, followers, avatar } }) {
   const dispatch = useDispatch();
   const followings = useSelector(state => state.users.followings);
 
-  console.log(followings);
-
   const isFollowed = () => followings.includes(id);
 
   if (isFollowed()) {
